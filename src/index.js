@@ -2,13 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import './App.css';
 import reportWebVitals from './reportWebVitals';
+import UIkit from 'uikit';
+import "uikit/dist/css/uikit.min.css";
+import Icons from "uikit/dist/js/uikit-icons"
+import ThemeContextProvider from './contexts/ThemeContext';
 
+
+
+UIkit.use(Icons);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+   <ThemeContextProvider>     {/*context to have a global theme wrapped around our app*/}
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>{' '}
+  </ThemeContextProvider>  
 );
 
 // If you want to start measuring performance in your app, pass a function

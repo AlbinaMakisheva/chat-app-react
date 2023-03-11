@@ -1,38 +1,169 @@
 .App {
   text-align: center;
+  height: 100vh;
+}
+.night-mode {
+  background: #3f3a3a;
+  color: aliceblue;
+} 
+.day-mode{
+  background: rgb(221, 226, 231);
+}
+.night-mode #chatapp {
+  background-color: #3f3a3a;
+  color: aliceblue;
+  transition-duration: 0.5s
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+#mode-button{
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  background-color: #ccc;
+  color: #fff;
+  margin: 20px;
+  padding: 10px;
+  width: 25vw;
+  height: 7vh;
+  border-radius: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.night-mode #mode-button{
+  color:rgb(225, 218, 172);
+  background-color: #797373;
+  transition-duration: 0.5s
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.day-mode #mode-button{
+  color:rgb(122, 108, 157);
+  background-color: #e4e4e4;
+  transition-duration: 0.5s
+}
+
+#mode-button .toggle {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease-in-out;
+}
+
+.night-mode #mode-button .toggle {
+  transform: translateX(12vw);
+}
+
+.day-mode #mode-button .toggle {
+  transform: translateX(0vw);
+}
+
+
+
+
+#button-signout{
+  color:#797373;
+  background-color: white;
+}
+
+#chatnames{
+  width: 20vw;
+
+}
+#chatting-area{
+  width: 50vw;
+
+}
+#choosechat{
+  padding: 70px;
+}
+
+#chatbody{
+  height: 400px;
+}
+
+#mymess{
+  background-color: rgb(85, 149, 170);
+  color: white;
+  border-radius: 30px;
+  width: max-content;
+  padding-inline: 10px;
+  margin-top: 5px;
+}
+
+#friendsmess{
+  background-color: rgb(228, 228, 228);
+  border-radius: 30px;
+  width: max-content;
+  padding-inline: 10px;
+  margin-top: 5px;
+
+}
+
+.flex-hor{
+  display: flex;
+  flex-direction: row;
+
+}
+.flex-vert{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: space-around;
+}
+
+.newUserData{
+  margin : 20px;
+  padding: 15px;
+  width: 20vw
+}
+
+.footer-panel{
+  position: absolute;
+  bottom: 10vh;
+  left: 35vw;
+}
+
+.button {
+  width: 10vw;
+  align-self: center;
+}
+
+.footer-icons{
+  padding: 5vw;
+}
+
+
+
+
+
+
+#chat-input{
+  position: absolute;
+  bottom: 10px;
+}
+
+#settings-panel{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: absolute;
+  top: 10vh;
+  right: 20vw ;
+  height: 400px;
+  width: 60vw
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#adduser-panel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 10vh;
+  left: 20vw ;
+  height: 400px;
+  width: 60vw
 }
