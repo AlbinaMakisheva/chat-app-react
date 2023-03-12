@@ -1,3 +1,12 @@
+# Installations
+1. npm i uikit --save
+2. npm install @mui/material @emotion/react @emotion/styled
+3. npm i -D react-router-dom
+4. npm install react-input-emoji --save
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

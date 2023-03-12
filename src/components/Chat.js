@@ -1,4 +1,6 @@
 import { useState } from "react";
+import InputEmoji from 'react-input-emoji'
+
 
 
 const Chat = ({name, people, sendMess, handleOpen}) => {
@@ -29,15 +31,13 @@ const Chat = ({name, people, sendMess, handleOpen}) => {
         })}
 
          </div>
-        <div className='flex-hor' id="chat-input">
-        <input className="uk-input"  type="text" value={newMess} placeholder="Type.." onChange={(e)=>{
-            setnewMess(e.target.value)
-        }}></input>
-        <a href="" class="uk-icon-button" uk-icon="arrow-up" onClick={(e)=>{
+        <div className='flex-hor'>
+        <InputEmoji  id="mess-input" type="text" value={newMess} placeholder="Type.." onChange={setnewMess} ></InputEmoji>
+        <button className="uk-icon-button" uk-icon="arrow-up" onClick={(e)=>{
             e.preventDefault();
             sendMess(newMess, name);
             setnewMess('')
-        }}></a>
+        }}></button>
         </div>
        
     </div>

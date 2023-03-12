@@ -1,8 +1,8 @@
-import './App.css';
-import Body from './components/List';
-import Footer from './components/Footer';
-import Settings from './components/Settings';
-import AddUser from './components/AddUser';
+
+import Body from '../components/List';
+import Footer from '../components/Footer';
+import Settings from '../components/Settings';
+import AddUser from '../components/AddUser';
 import {useState} from 'react';
 
 
@@ -58,7 +58,7 @@ const changeBody=(val)=>{
   setShowBody(val)
 }
 
-const sendMess=(newMess, name)=>{
+const sendMess=(newMess, name, emoji)=>{
   const update= people.map(person=>{
   if (person.name === name){
       let newmessage= {...person.messages, "1.3": newMess};

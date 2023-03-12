@@ -104,16 +104,20 @@
 
 }
 
+
 .flex-hor{
   display: flex;
   flex-direction: row;
-
+  align-items: center;
+  height: 3vw;
 }
+
 .flex-vert{
   display: flex;
   flex-direction: column;
   margin: 10px;
   justify-content: space-around;
+  align-items: center;
 }
 
 .newUserData{
@@ -140,10 +144,7 @@
 
 
 
-
-
 #chat-input{
-  position: absolute;
   bottom: 10px;
 }
 
@@ -166,4 +167,27 @@
   left: 20vw ;
   height: 400px;
   width: 60vw
+}
+
+.pages{
+  height: 100vh;
+  text-align: center;
+  padding: 10vw;
+}
+
+.inputs-signup{
+  margin: 2vh;
+  width: 20vw;
+  left: 50vw;
+  height: 3vh;
+}
+#greet-text{
+  max-width: 700px;
+  text-align: center;
+}
+
+#div-header{
+  display: inline-block;
+  align-items: flex-start;
+  margin: 2vh
 }

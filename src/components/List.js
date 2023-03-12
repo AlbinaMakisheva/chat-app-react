@@ -22,7 +22,7 @@ const handleOpen=(val)=>{
     <table className="uk-table uk-table-responsive uk-table-divider">
     <thead>
         <tr>
-            <th>Chats</th>
+            <td><h3>Chats</h3></td>
         </tr>
     </thead>
     <tbody>
@@ -30,10 +30,10 @@ const handleOpen=(val)=>{
             
                 <tr key={index}>
                     <td> 
-                        <a className='namelink' onClick={()=>{
+                        <h5 className='namelink' onClick={()=>{
                         setOpenchat(true);
                         setPersonName(person.name)}
-                        }>{person.name}</a> 
+                        }>{person.name}</h5> 
                     </td>
                 </tr>
             

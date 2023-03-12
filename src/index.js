@@ -1,27 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Route, Navigate, Routes} from "react-router-dom";
 import './index.css';
-import App from './App';
+import App from './pages/AppPage';
 import './App.css';
-import reportWebVitals from './reportWebVitals';
 import UIkit from 'uikit';
 import "uikit/dist/css/uikit.min.css";
 import Icons from "uikit/dist/js/uikit-icons"
 import ThemeContextProvider from './contexts/ThemeContext';
+import SignupPage from './pages/SignupPage';
+import SignupContextProvider from './contexts/AccountsContext';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage'
 
 
 
 UIkit.use(Icons);
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-   <ThemeContextProvider>     {/*context to have a global theme wrapped around our app*/}
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>{' '}
-  </ThemeContextProvider>  
+  <BrowserRouter>
+    <SignupContextProvider>
+      <ThemeContextProvider>     {/*context to have a global theme wrapped around our app*/}
+        <React.StrictMode>
+           <Routes>
+            <Route path='/' element= {<HomePage/>} />
+            <Route path='/app' element= {<App />} />
+            <Route path='/signup' element= {<SignupPage />} />
+            <Route path='/login' element= {<LoginPage />} />
+            
+          </Routes>
+        </React.StrictMode>{' '}
+      </ThemeContextProvider>  
+    </SignupContextProvider>
+  </BrowserRouter>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
