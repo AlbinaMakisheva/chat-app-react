@@ -18,9 +18,9 @@ const SignupPage = () => {
                 <form className='flex-vert' >
                     <input className='inputs-signup' type='text' value={name} placeholder='Your name' onChange={(e)=> setName(e.target.value)}>
                     </input>
-                    <input className='inputs-signup' type='tel' value={tel} placeholder='Type your phone number' onChange={(e)=> setTel(e.target.value)}>
+                    <input className='inputs-signup' type='tel' value={tel} placeholder='Type your phone number' title="7-digit phone number"  onChange={(e)=> setTel(e.target.value)}>
                     </input>
-                    <input className='inputs-signup' type='password' value={passwd} placeholder='Password' onChange={(e)=> setPasswd(e.target.value)}>
+                    <input className='inputs-signup' type='password' value={passwd} placeholder='Password' title="6-20 char, 1 num, 1 uppercase, 1 lowercase " onChange={(e)=> setPasswd(e.target.value)}>
                     </input>
                     <span>
                     <Link to='/login'>

@@ -30,11 +30,17 @@ const checkUser=(tel, passwd, e)=>{
 
 const createUser=(name, tel, passwd, e)=>{
     let id= users[users.length-1].id +1;
+    let pattern1=  /^[A-Za-z]\w{7,14}$/;
+    let pattern2= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
     if(users.find(user=> user.tel ==tel)){
          alert("Such phone already registered!")
          e.preventDefault()
     } else if(tel==null || passwd== null){
-        alert("Check inputs!");
+        alert("Insert in all fields!");
+        e.preventDefault()
+    } else if(!tel.match(pattern1) || !passwd.match(pattern2)){
+        alert("Phone number is not valid or password isnt strong enough!");
         e.preventDefault()
     } else {
         let newuser= {id: id, name: name, tel:tel, passwd: passwd}

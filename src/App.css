@@ -20,14 +20,13 @@
 #mode-button{
   position: relative;
   display: inline-block;
-  padding: 10px 20px;
   border: none;
   background-color: #ccc;
   color: #fff;
   margin: 20px;
   padding: 10px;
-  width: 25vw;
-  height: 7vh;
+  width: 20vw;
+  height: 5vh;
   border-radius: 30px;
 }
 
@@ -55,7 +54,7 @@
 }
 
 .night-mode #mode-button .toggle {
-  transform: translateX(12vw);
+  transform: translateX(10vw);
 }
 
 .day-mode #mode-button .toggle {

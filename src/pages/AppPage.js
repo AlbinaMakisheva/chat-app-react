@@ -3,7 +3,8 @@ import Body from '../components/List';
 import Footer from '../components/Footer';
 import Settings from '../components/Settings';
 import AddUser from '../components/AddUser';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import { ready } from 'jquery';
 
 
 function App() {
@@ -58,6 +59,19 @@ const changeBody=(val)=>{
   setShowBody(val)
 }
 
+useEffect(()=> getUsers,[]);
+
+const getUsers=()=>{
+  fetch('http://localhost:8888/chatapp-api/getUser.php',
+      {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'}})
+    .then(res=> { if(!res.ok) throw new Error('Network response problem')
+                  res.json()})
+    .then(data=> setPeople(data))
+    .catch(err=> console.log('Error:' + err))
+}
+
 const sendMess=(newMess, name, emoji)=>{
   const update= people.map(person=>{
   if (person.name === name){
@@ -67,6 +81,7 @@ const sendMess=(newMess, name, emoji)=>{
   });
   setPeople(update)
 }
+
 
 const addFriend=(newName, newNum)=>{
   setShowBody(true);

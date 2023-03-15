@@ -1,12 +1,14 @@
-[{
-    "id": 0,
-    "name": "John"
-},
-{
-    "id": 1,
-    "name": "Alice"
-},
-{
-    "id": 2,
-    "name": "Hannah"
-}]
+[
+    {
+        "id": 0,
+        "tel": 346565,
+        "name": "mia",
+        "passwd": 123456
+    },
+    {
+        "id": 1,
+        "tel": 222,
+        "name": "albi",
+        "passwd": 111
+    }
+]
