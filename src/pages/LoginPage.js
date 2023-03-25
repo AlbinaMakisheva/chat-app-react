@@ -15,9 +15,9 @@ const LoginPage = () => {
         <SignupContext.Consumer>
             {({checkUser})=>(
                 <form className='flex-vert' >
-                    <input className='inputs-signup' type='tel' value={tel} placeholder='Type your phone number' onChange={(e)=> setTel(e.target.value)}>
+                    <input className='inputs-signup' type='tel' value={tel} placeholder='Type your phone number' onChange={(e)=> setTel(e.target.value)} required>
                     </input>
-                    <input className='inputs-signup' type='password' value={passwd} placeholder='Password' onChange={(e)=> setPasswd(e.target.value)}>
+                    <input className='inputs-signup' type='password' value={passwd} placeholder='Password' onChange={(e)=> setPasswd(e.target.value)} required>
                     </input>
                     <span>
                     <Link to='/app'>
