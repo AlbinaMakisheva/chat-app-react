@@ -3,7 +3,7 @@ import InputEmoji from 'react-input-emoji'
 
 
 
-const Chat = ({name, people, sendMess, handleOpen}) => {
+const Chat = ({name, chats, sendMess, handleOpen}) => {
    const [newMess, setnewMess]= useState();
 
    const changeOpen=()=>{
@@ -17,7 +17,7 @@ const Chat = ({name, people, sendMess, handleOpen}) => {
             <a className="uk-margin-small" id='button-close' uk-icon="close" onClick={changeOpen}></a>
         </div>
         <div className="uk-section  uk-section-default">
-        {people.map(person => {
+        {chats.map(person => {
             if(person.name === name && person.messages){
                  return Object.keys(person.messages).map((mess, index)=>{
                     if(mess.startsWith('1')){

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SignupContext } from '../contexts/AccountsContext';
 
 const LoginPage = () => {

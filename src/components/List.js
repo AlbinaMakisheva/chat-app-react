@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Chat from './Chat';
 import Footer from './Footer';
+import { SignupContext } from '../contexts/AccountsContext'
 
 
 const Body = ({people, sendMess}) => {
@@ -12,12 +13,18 @@ const handleOpen=(val)=>{
     setOpenchat(val)
 }
 
+const chatsContext= useContext(SignupContext);
+const {chats}= chatsContext;
 
-  return (
+  return ( 
+  <SignupContext.Consumer>
+        {({getLoggedAccountChats})=>( 
     <div className="uk-card uk-card-body uk-animation-slide-bottom" id='chatbody'>
+      
         <hr className="uk-divider-small"></hr>
         
     <div className="uk-flex uk-flex-center" id='chats'>
+        
     <div className="uk-card uk-card-default uk-card-body" id='chatnames'>
     <table className="uk-table uk-table-responsive uk-table-divider">
     <thead>
@@ -26,7 +33,8 @@ const handleOpen=(val)=>{
         </tr>
     </thead>
     <tbody>
-        {people.map((person, index)=>(
+        
+           { chats.map((person, index)=>(
             
                 <tr key={index}>
                     <td> 
@@ -43,12 +51,15 @@ const handleOpen=(val)=>{
 
     </div>
         <div className="uk-card uk-card-default uk-card-body uk-margin-left" id='chatting-area'>
-            {openchat? <Chat name={personName} people={people} sendMess={sendMess} handleOpen={handleOpen}/>   
+            {openchat? <Chat name={personName} chats={chats} sendMess={sendMess} handleOpen={handleOpen}/>   
             : <p id='choosechat'>Choose a chat</p>}
 
         </div>
     </div>
-    </div>
+ 
+    </div>   
+    )}
+    </SignupContext.Consumer>
   )
 }
 

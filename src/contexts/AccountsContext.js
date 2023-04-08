@@ -6,6 +6,13 @@ export const SignupContext= createContext(null)
 
 const SignupContextProvider = props => {
 
+    const [isLoading, setIsLoading] = useState(false);
+
+   
+    const [loggedUser, setLoggedUser]= useState()
+    const [chats, setChats]=useState([]);
+
+
     const [users, setUsers]= useState(
         [
 // {
@@ -27,20 +34,41 @@ useEffect(()=> getUsers(),[]);
 
 const getUsers=()=>{
   fetch('http://localhost:8888/chatapp-api/users/getUser.php')
-    .then(res=> { if(!res.ok) throw new Error('Network response problem')
-                  return res.json()})
+    .then(res=> {
+        if(!res.ok) throw new Error('Network response problem')
+        return res.json()
+    })
     .then(data=> {
-            console.log(data);
-         setUsers(data)})
+        console.log(data);
+        setUsers(data)})
     .catch(err=> console.log('Error:' + err))
 }
 
+// const getUsers = async () => {
+//     try {
+//       const res = await fetch('http://localhost:8888/chatapp-api/users/getUser.php');
+//       if (!res.ok) throw new Error('Network response problem');
+//       const data = await res.json();
+//       console.log(data);
+//       setUsers(data);
+//       getLoggedAccountChats(); // Call getLoggedAccountChats after updating users state
+//     } catch (err) {
+//       console.log('Error:' + err);
+//     }
+//   }
+  
 
-useEffect(()=>{console.log(users)}, [users])
 
 
+// useEffect(()=>{ console.log(users)}, [users])
+// useEffect(() => { console.log(loggedUser)}, [loggedUser]);
+useEffect(() => { console.log(chats)}, [chats]);
+
+
+  
+   
 const checkUser=(tel, passwd, e)=>{
-    e.preventDefault();
+    setIsLoading(true);
 
     fetch('http://localhost:8888/chatapp-api/users/checkUser.php',{
         method:'POST',
@@ -49,16 +77,55 @@ const checkUser=(tel, passwd, e)=>{
             passwd: passwd
         })
     })
-    .then(res=> { if (!res.ok) {
+    .then(res=> { 
+        if (!res.ok) {
                 throw new Error('Network response was not ok');
                 }
-                return res.json()})
-    .then(data=> { console.log(data)
-        if (data.success === false) {
+                return res.json()
+            })
+    .then(data => {
+        console.log(data.success);
+        if (data.success == false) {
             e.preventDefault();
-          }})
-    .catch(err=> console.log(err))
+            return false;
+        } else {
+            let usr= data.user
+            setLoggedUser(data.user); 
+            setIsLoading(false);
+            console.log('loggeduser'+ loggedUser);
+            getLoggedAccountChats(usr);
+            
+            }
+        })
+    .catch(err=> {
+        console.log(err); 
+        setIsLoading(false);})
 }
+
+
+//useEffect(()=>getLoggedAccountChats(), [loggedUser]);
+
+const getLoggedAccountChats=(usr)=>{
+    setIsLoading(true);
+    fetch('http://localhost:8888/chatapp-api/chats/getChat.php',
+    {
+        method: 'POST',
+        body: JSON.stringify({
+            id: usr,
+    })})
+    .then(res=> {
+        if(!res.ok) throw new Error('Network response problem')
+        return res.json()
+    })
+    .then(data=> {
+        console.log('key:'+ data.key)
+        setChats(data.chats);
+        setIsLoading(false);
+        console.log(chats)
+    })
+    .catch(err=> console.log('Error:' + err))
+}
+
 
 // const checkUser=(tel, passwd, e)=>{
 //     const matchingUser = users.find(
@@ -120,18 +187,24 @@ const createUser=(name, tel, passwd, e)=>{
 
 
 
-
-  return (
-   <SignupContext.Provider
-        value={{
-            checkUser,
-            createUser
-        }}
-   >
-    {props.children}
-   </SignupContext.Provider>
-    
-  )
+if (isLoading) {
+    return (
+        <div>Loading...</div>
+    );
+} else {
+    return (
+        <SignupContext.Provider
+            value={{
+                getUsers,
+                checkUser,
+                createUser,
+                chats: chats
+            }}
+        >
+            {props.children}
+        </SignupContext.Provider>
+    )
+}
 }
 
 
