@@ -4,7 +4,7 @@ import Footer from './Footer';
 import { SignupContext } from '../contexts/AccountsContext'
 
 
-const Body = ({people, sendMess}) => {
+const Body = ({sendMess}) => {
 
 const [openchat, setOpenchat]= useState(false);
 const [personName, setPersonName]= useState();
@@ -13,12 +13,11 @@ const handleOpen=(val)=>{
     setOpenchat(val)
 }
 
-const chatsContext= useContext(SignupContext);
-const {chats}= chatsContext;
+const signupContext= useContext(SignupContext);
+const {chats}= signupContext;
 
   return ( 
-  <SignupContext.Consumer>
-        {({getLoggedAccountChats})=>( 
+ 
     <div className="uk-card uk-card-body uk-animation-slide-bottom" id='chatbody'>
       
         <hr className="uk-divider-small"></hr>
@@ -58,8 +57,7 @@ const {chats}= chatsContext;
     </div>
  
     </div>   
-    )}
-    </SignupContext.Consumer>
+    
   )
 }
 

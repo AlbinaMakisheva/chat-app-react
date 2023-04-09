@@ -9,7 +9,7 @@ const SignupContextProvider = props => {
     const [isLoading, setIsLoading] = useState(false);
 
    
-    const [loggedUser, setLoggedUser]= useState()
+    const [loggedUser, setLoggedUser]= useState();
     const [chats, setChats]=useState([]);
 
 
@@ -138,6 +138,7 @@ const getLoggedAccountChats=(usr)=>{
 
 
 
+
 const createUser=(name, tel, passwd, e)=>{
     fetch('http://localhost:8888/chatapp-api/users/createUser.php',{
         method: 'POST',
@@ -198,7 +199,8 @@ if (isLoading) {
                 getUsers,
                 checkUser,
                 createUser,
-                chats: chats
+                chats: chats,
+                loggedUser
             }}
         >
             {props.children}

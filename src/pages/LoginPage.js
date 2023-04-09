@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Link } from "react-router-dom";
 import { SignupContext } from '../contexts/AccountsContext';
 
@@ -6,14 +6,15 @@ const LoginPage = () => {
 
     const [tel, setTel]= useState('');
     const [passwd, setPasswd]= useState('');
-    
+
+    const {checkUser } = useContext(SignupContext);
 
   return (
     <div className='pages'>
         <h3> Login</h3>
         <>
-        <SignupContext.Consumer>
-            {({checkUser})=>(
+        {/*<SignupContext.Consumer>
+            {({checkUser})=>(*/}
                 <form className='flex-vert' >
                     <input className='inputs-signup' type='tel' value={tel} placeholder='Type your phone number' onChange={(e)=> setTel(e.target.value)} required>
                     </input>
@@ -30,9 +31,10 @@ const LoginPage = () => {
                     </span>
                 </form>
 
-            )}
+           {/* )}
            
-        </SignupContext.Consumer>
+                    </SignupContext.Consumer>*/}
+                    
         </>
     </div>
   )
